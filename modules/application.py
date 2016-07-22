@@ -272,9 +272,18 @@ class MainWidget(Qt.QMainWindow):
 		if addons != None:
 			self.addonList.setRowCount(len(addons))
 			for (row, addon) in enumerate(addons):
-				self.addonList.setItem(row, 0, Qt.QTableWidgetItem(addon["name"]))
-				self.addonList.setItem(row, 1, Qt.QTableWidgetItem(addon["uri"]))
-				self.addonList.setItem(row, 2, Qt.QTableWidgetItem(addon["version"]))
+				nameItem = Qt.QTableWidgetItem(addon["name"])
+				nameItem.setFlags(Qt.Qt.ItemIsEnabled)
+
+				urlItem = Qt.QTableWidgetItem(addon["uri"])
+				urlItem.setFlags(Qt.Qt.ItemIsEnabled)
+
+				versionItem = Qt.QTableWidgetItem(addon["version"])
+				versionItem.setFlags(Qt.Qt.ItemIsEnabled)
+
+				self.addonList.setItem(row, 0, nameItem)
+				self.addonList.setItem(row, 1, urlItem)
+				self.addonList.setItem(row, 2, versionItem)
 				allowBeta = False
 				if "allowbeta" in addon:
 					allowBeta = addon["allowbeta"]
