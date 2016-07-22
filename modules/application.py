@@ -33,6 +33,7 @@ class MainWidget(Qt.QMainWindow):
 		self.loadAddons()
 
 		self.availableAddons = []
+		self.updateCatalog()
 		self.loadAddonCatalog()
 
 	def addWidgets(self):
